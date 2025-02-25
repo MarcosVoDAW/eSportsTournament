@@ -1,9 +1,9 @@
 package tournament.data;
 
 public abstract class Tournament {
-    private String name;
-    private String gameAssociated;
-    private double prize;
+    protected String name;
+    protected String gameAssociated;
+    protected double prize;
 
     public Tournament(String name, String gameAssociated, double prize) {
         this.name = name;
@@ -29,7 +29,7 @@ public abstract class Tournament {
         this.gameAssociated = gameAssociated;
     }
 
-    public String ToString()
+    public String toString()
     {
         return name + " (" + gameAssociated + ")" ;
     }
