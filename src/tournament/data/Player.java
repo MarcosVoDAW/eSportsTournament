@@ -1,6 +1,4 @@
-package tournament.data.subclasses;
-
-import tournament.data.Participant;
+package tournament.data;
 
 public class Player extends Participant {
     protected int level;

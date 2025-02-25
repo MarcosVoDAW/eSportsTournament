@@ -1,7 +1,5 @@
 package tournament.data;
 
-import tournament.data.subclasses.Player;
-
 public class Team extends Participant
 {
     Player[]players;

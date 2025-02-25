@@ -1,5 +1,4 @@
-package tournament.data.subclasses;
-import tournament.data.Tournament;
+package tournament.data;
 
 public class IndividualTournament extends Tournament
 {
