@@ -4,9 +4,7 @@ import tournament.data.Participant;
 
 public class Player extends Participant {
     protected int level;
-    protected float ranking;
-
-
+    protected double ranking;
     /*
     public Player(String name, int level, double ranking) {
         super(name);
@@ -18,7 +16,7 @@ public class Player extends Participant {
 
     Optaremos por repetir código y poner 2 if para cada atributo*/
 
-    public Player(String name, int level, float ranking)
+    public Player(String name, int level, double ranking)
     {
         super(name);
         this.level = level < 1 ? 1 : level > 100 ? 100 : level;
@@ -33,11 +31,11 @@ public class Player extends Participant {
         this.level = level < 1 ? 1 : level > 100 ? 100 : level;
     }
 
-    public float getRanking() {
+    public double getRanking() {
         return ranking;
     }
 
-    public void setRanking(float ranking) {
+    public void setRanking(double ranking) {
         this.ranking = ranking < 0 ? 0 : ranking;
     }
 
