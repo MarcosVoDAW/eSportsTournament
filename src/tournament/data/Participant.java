@@ -17,4 +17,5 @@ public abstract class Participant
         this.name=name;
     }
 
+    public abstract String toString();
 }
