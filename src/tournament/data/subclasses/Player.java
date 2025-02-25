@@ -6,10 +6,34 @@ public class Player extends Participant {
     protected int level;
     protected double ranking;
 
+
+    /*
     public Player(String name, int level, double ranking) {
         super(name);
         setLevel(level);
         setRanking(ranking);
+    }
+    Podemos realizar esta forma en la que llamamos a los setters de "Level" y de "Ranking" para evitar repetir código
+    pero el problema es que puede NO ser aceptado en el proyecto
+
+    Optaremos por repetir código y poner 2 if para cada atributo*/
+
+    public Player(String name, int level, double ranking) {
+        super(name);
+        if (level < 1) {
+            this.level = 1;
+        } else if (level > 100) {
+            this.level = 100;
+        } else {
+            this.level = level;
+        }
+
+        if (ranking < 0) {
+            this.ranking = 0;
+        }
+        else {
+            this.ranking = ranking;
+        }
     }
 
     public int getLevel() {
