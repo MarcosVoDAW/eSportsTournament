@@ -1,15 +1,17 @@
 package tournament.main;
 
-import tournament.comparators.PlayerRankingComparator;
-import tournament.comparators.TeamRankingComparator;
+import tournament.comparators.*;
 import tournament.data.*;
 import tournament.exceptions.FullTeamException;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.Scanner;
 
 public class TournamentManager {
+    Scanner scanner = new Scanner(System.in);
+
     private Player[] registeredPlayers;
     private Team[] registeredTeams;
     private Tournament[] tournaments;
@@ -54,7 +56,8 @@ public class TournamentManager {
             team5.addPlayer(registeredPlayers[9]);
         } catch (FullTeamException e){
             //?????? me lo pone solo
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
         registeredTeams[0] = team1;
@@ -85,11 +88,12 @@ public class TournamentManager {
             matches[i] = new Match(tournament, participant1, participant2);
         }
     }
+    //Esta funcion para la opcion 5 del menú O5
     public Player findPlayer(String username)
     {
         Player result = null;
         for (Player player : registeredPlayers) {
-            if (player.getName().equalsIgnoreCase(username)) {
+            if (player.getName().equals(username)) {
                 result = player;
             }
         }
@@ -116,53 +120,181 @@ public class TournamentManager {
     }
 
     //3 formas distintas tambien por si acaso
+    //y no se si hay que usar esta ordenacion junto a otra para el 2
     public void showPlayerRanking()
     {
-        //Hacer funcion de mostrar array para eliminar redundancia
         Arrays.sort(registeredPlayers, new PlayerRankingComparator());
-        for (Player player : registeredPlayers)
-        {
-            System.out.println(player);
-        }
+        showParticipantsArray(registeredPlayers);
+
         Arrays.sort(registeredPlayers, new Comparator<Player>() {
             @Override
             public int compare(Player p1, Player p2) {
                 return Double.compare(p1.getRanking(), p2.getRanking());
             }
         });
-        for (Player player : registeredPlayers)
-        {
-            System.out.println(player);
-        }
+        showParticipantsArray(registeredPlayers);
+
         Arrays.sort(registeredPlayers, (p1, p2) -> Double.compare(p1.getRanking(), p2.getRanking()));
-        for (Player player : registeredPlayers)
-        {
-            System.out.println(player);
-        }
+        showParticipantsArray(registeredPlayers);
     }
     //3 formas distintas tambien por si acaso
+    //Esta funcion para la opcion 3 del menú O3
     public void showTeamRanking()
     {
-        //Hacer funcion de mostrar array para eliminar redundancia
         Arrays.sort(registeredTeams, new TeamRankingComparator());
-        for (Team team : registeredTeams)
-        {
-            System.out.println(team);
-        }
+        showParticipantsArray(registeredTeams);
+
         Arrays.sort(registeredTeams, new Comparator<Team>() {
             @Override
             public int compare(Team t1, Team t2) {
                 return Double.compare(t1.getAveragePlayerRanking(), t2.getAveragePlayerRanking());
             }
         });
-        for (Team team : registeredTeams)
-        {
-            System.out.println(team);
-        }
+        showParticipantsArray(registeredTeams);
+
         Arrays.sort(registeredTeams, (t1,t2) -> Double.compare(t1.getAveragePlayerRanking(), t2.getAveragePlayerRanking()));
-        for (Team team : registeredTeams)
+        showParticipantsArray(registeredTeams);
+    }
+
+
+    //funciones extras:
+    public void showParticipantsArray(Participant[] participants)
+    {
+        for(Participant participant : participants)
         {
-            System.out.println(team);
+            System.out.println(participant);
         }
+    }
+    public void showTournamentByNameO1()
+    {
+        Arrays.sort(tournaments, new TournamentNameComparator());
+        showTournaments();
+
+        Arrays.sort(tournaments, new Comparator<Tournament>() {
+            @Override
+            public int compare(Tournament t1, Tournament t2) {
+                return t1.getName().compareTo(t2.getName());
+            }
+        });
+        showTournaments();
+
+        Arrays.sort(tournaments, (t1,t2)-> t1.getName().compareTo(t2.getName()));
+        showTournaments();
+    }
+    public void showPlayersByRankingAndNameO2()
+    {
+        Arrays.sort(registeredPlayers, new PlayerRankingAndNameComparator());
+        showParticipantsArray(registeredPlayers);
+
+        Arrays.sort(registeredPlayers, new Comparator<Player>() {
+            @Override
+            public int compare(Player p1, Player p2) {
+                int result;
+                result = Double.compare(p1.getRanking(), p2.getRanking());
+                if (result == 0)
+                    result = p1.getName().compareTo(p2.getName());
+                return result;
+            }
+        });
+        showParticipantsArray(registeredPlayers);
+
+        Arrays.sort(registeredPlayers, (p1,p2)-> {
+            int result;
+            result = Double.compare(p1.getRanking(), p2.getRanking());
+            if (result == 0)
+                result = p1.getName().compareTo(p2.getName());
+            return result;
+        });
+        showParticipantsArray(registeredPlayers);
+    }
+    public void addNewPlayerToTeamO4()
+    {
+        System.out.println("Team: ");
+        String teamName = scanner.nextLine();
+        Team team =  findTeam(teamName);
+        if (team != null)
+        {
+            System.out.println("Player data: ");
+            System.out.println("Name: ");
+            String playerName = scanner.nextLine();
+            System.out.println("Name: ");
+            int playerLevel = scanner.nextInt();
+            System.out.println("Name: ");
+            double playerRanking = scanner.nextDouble();
+            Player player = new Player(playerName, playerLevel, playerRanking);
+            try
+            {
+                team.addPlayer(player);
+            }
+            catch (FullTeamException e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+        else
+        {
+            System.out.println("No team found");
+        }
+    }
+    public void findPlayersO6(String text)
+    {
+        for (Player player : registeredPlayers) {
+            if (player.getName().toLowerCase().contains(text.toLowerCase())) {
+                System.out.println(player);
+            }
+        }
+    }
+    public void findTeamsO7(String text)
+    {
+        for (Team team : registeredTeams) {
+            if (team.getName().toLowerCase().contains(text.toLowerCase())) {
+                System.out.println(team);
+            }
+        }
+    }
+    public void showMatchesByTournamentNameO8()
+    {
+        //hacer funcion pra mostrar el array cada vez??
+        Arrays.sort(matches, new MatchTournamentNameComparator());
+        for(Match match : matches)
+        {
+            System.out.println(match);
+        }
+
+        Arrays.sort(matches, new Comparator<Match>() {
+            @Override
+            public int compare(Match m1, Match m2) {
+                return (m1.getAssociatedTournament().getName()).compareTo(m2.getAssociatedTournament().getName());
+            }
+        });
+        for(Match match : matches)
+        {
+            System.out.println(match);
+        }
+
+        Arrays.sort(matches, (m1,m2)-> (m1.getAssociatedTournament().getName()).compareTo(m2.getAssociatedTournament().getName()));
+        for(Match match : matches)
+        {
+            System.out.println(match);
+        }
+    }
+    //para opcion 9 O9
+    public void inputResult()
+    {
+        for (int i = 0; i < matches.length; i++)
+        {
+            if (matches[i].getResult().equalsIgnoreCase("Pending"))
+            {
+                System.out.println(i + ": " + matches[i]);
+            }
+        }
+
+        System.out.println("Number of the match you want update: ");
+        int matchIndex = scanner.nextInt();
+        //comprobar si el index que mete es valido??
+        System.out.print("Result: ");
+        String result = scanner.nextLine();
+
+        matches[matchIndex].setResult(result);
     }
 }

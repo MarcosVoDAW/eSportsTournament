@@ -23,6 +23,7 @@ public class Team extends Participant
     {
         this.players = players;
     }
+
     public void addPlayer(Player player) throws FullTeamException
     {
         if(playerCount>= max_players)
@@ -31,16 +32,6 @@ public class Team extends Participant
         }
         players[playerCount] = player;
         playerCount++;
-    }
-    @Override
-    public String toString()
-    {
-        String playersString="";
-        for (Player player : players)
-        {
-            playersString += "- "+player + "\n";
-        }
-        return super.toString()+" - Members: "+playerCount+"/"+max_players+": "+playersString;
     }
 
     //funcion extra
@@ -53,4 +44,17 @@ public class Team extends Participant
         }
         return sum/playerCount;
     }
+
+    @Override
+    public String toString()
+    {
+        String playersString="";
+        for (Player player : players)
+        {
+            if (player != null)
+                playersString += "- "+player + "\n";
+        }
+        return super.toString()+" - Members: "+playerCount+"/"+max_players+": \n"+playersString;
+    }
+
 }
