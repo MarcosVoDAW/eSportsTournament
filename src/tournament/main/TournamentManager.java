@@ -3,6 +3,8 @@ package tournament.main;
 import tournament.data.*;
 import tournament.exceptions.FullTeamException;
 
+import java.util.Random;
+
 public class TournamentManager {
     private Player[] registeredPlayers;
     private Team[] registeredTeams;
@@ -17,7 +19,7 @@ public class TournamentManager {
     }
 
     public void initialize() {
-        // Initialize registeredPlayers
+
         registeredPlayers[0] = new Player("Player0", 11, -1);
         registeredPlayers[1] = new Player("Player1", 101, 2600);
         registeredPlayers[2] = new Player("Player2", -1, 777.777);
@@ -61,6 +63,53 @@ public class TournamentManager {
         tournaments[1] = new TeamTournament("Team Wars", "Minecraft", 7777, 5);
         tournaments[2] = new MixedTournament("Mixed Sandwich League", "Valorant", 6942.01, "5v5");
 
+        Random random = new Random();
+        for (int i = 0; i < matches.length; i++) {
+            Tournament tournament = tournaments[random.nextInt(tournaments.length)];
+            boolean participantIsPlayer = random.nextBoolean();
 
+            Participant participant1;
+            Participant participant2;
+            if (participantIsPlayer) {
+                participant1 = registeredPlayers[random.nextInt(registeredPlayers.length)];
+                participant2 = registeredPlayers[random.nextInt(registeredPlayers.length)];
+            }
+            else {
+                participant1 = registeredTeams[random.nextInt(registeredTeams.length)];
+                participant2 = registeredTeams[random.nextInt(registeredTeams.length)];
+            }
+            matches[i] = new Match(tournament, participant1, participant2);
+        }
     }
+    public Player findPlayer(String username)
+    {
+        Player result = null;
+        for (Player player : registeredPlayers) {
+            if (player.getName().equalsIgnoreCase(username)) {
+                result = player;
+            }
+        }
+        return result;
+    }
+
+    public Team findTeam(String teamName)
+    {
+        Team result = null;
+        for (Team team : registeredTeams) {
+            if (team.getName().equalsIgnoreCase(teamName)) {
+                result = team;
+            }
+        }
+        return result;
+    }
+
+    public void showTournaments()
+    {
+        for (Tournament tournament : tournaments)
+        {
+            System.out.println(tournament);
+        }
+    }
+
+
 }
