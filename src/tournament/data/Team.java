@@ -43,4 +43,14 @@ public class Team extends Participant
         return super.toString()+" - Members: "+playerCount+"/"+max_players+": "+playersString;
     }
 
+    //funcion extra
+    public double getAveragePlayerRanking(){
+        double sum = 0;
+        for (Player player : players)
+        {
+            if (player != null)
+                sum += player.getRanking();
+        }
+        return sum/playerCount;
+    }
 }

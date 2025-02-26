@@ -1,8 +1,12 @@
 package tournament.main;
 
+import tournament.comparators.PlayerRankingComparator;
+import tournament.comparators.TeamRankingComparator;
 import tournament.data.*;
 import tournament.exceptions.FullTeamException;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Random;
 
 public class TournamentManager {
@@ -103,7 +107,6 @@ public class TournamentManager {
         return result;
     }
 
-
     public void showTournaments()
     {
         for (Tournament tournament : tournaments)
@@ -112,5 +115,52 @@ public class TournamentManager {
         }
     }
 
-
+    public void showPlayerRanking()
+    {
+        //Hacer funcion de mostrar array para eliminar redundancia
+        Arrays.sort(registeredPlayers, new PlayerRankingComparator());
+        for (Player player : registeredPlayers)
+        {
+            System.out.println(player);
+        }
+        Arrays.sort(registeredPlayers, new Comparator<Player>() {
+            @Override
+            public int compare(Player p1, Player p2) {
+                return Double.compare(p1.getRanking(), p2.getRanking());
+            }
+        });
+        for (Player player : registeredPlayers)
+        {
+            System.out.println(player);
+        }
+        Arrays.sort(registeredPlayers, (p1, p2) -> Double.compare(p1.getRanking(), p2.getRanking()));
+        for (Player player : registeredPlayers)
+        {
+            System.out.println(player);
+        }
+    }
+    public void showTeamRanking()
+    {
+        //Hacer funcion de mostrar array para eliminar redundancia
+        Arrays.sort(registeredTeams, new TeamRankingComparator());
+        for (Team team : registeredTeams)
+        {
+            System.out.println(team);
+        }
+        Arrays.sort(registeredTeams, new Comparator<Team>() {
+            @Override
+            public int compare(Team t1, Team t2) {
+                return Double.compare(t1.getAveragePlayerRanking(), t2.getAveragePlayerRanking());
+            }
+        });
+        for (Team team : registeredTeams)
+        {
+            System.out.println(team);
+        }
+        Arrays.sort(registeredTeams, (t1,t2) -> Double.compare(t1.getAveragePlayerRanking(), t2.getAveragePlayerRanking()));
+        for (Team team : registeredTeams)
+        {
+            System.out.println(team);
+        }
+    }
 }
