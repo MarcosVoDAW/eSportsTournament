@@ -115,6 +115,7 @@ public class TournamentManager {
         }
     }
 
+    //3 formas distintas tambien por si acaso
     public void showPlayerRanking()
     {
         //Hacer funcion de mostrar array para eliminar redundancia
@@ -139,6 +140,7 @@ public class TournamentManager {
             System.out.println(player);
         }
     }
+    //3 formas distintas tambien por si acaso
     public void showTeamRanking()
     {
         //Hacer funcion de mostrar array para eliminar redundancia
