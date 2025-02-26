@@ -3,21 +3,11 @@ package tournament.data;
 public class Player extends Participant {
     protected int level;
     protected double ranking;
-    /*
-    public Player(String name, int level, double ranking) {
-        super(name);
-        setLevel(level);
-        setRanking(ranking);
-    }
-    Podemos realizar esta forma en la que llamamos a los setters de "Level" y de "Ranking" para evitar repetir código
-    pero el problema es que puede NO ser aceptado en el proyecto
-
-    Optaremos por repetir código y poner 2 if para cada atributo*/
 
     public Player(String name, int level, double ranking)
     {
         super(name);
-        this.level = level < 1 ? 1 : level > 100 ? 100 : level;
+        this.level = level < 1 ? 1 : (level > 100 ? 100 : level);
         this.ranking = ranking < 0 ? 0 : ranking;
     }
 
@@ -26,7 +16,7 @@ public class Player extends Participant {
     }
 
     public void setLevel(int level) {
-        this.level = level < 1 ? 1 : level > 100 ? 100 : level;
+        this.level = level < 1 ? 1 : (level > 100 ? 100 : level);
     }
 
     public double getRanking() {
@@ -39,6 +29,6 @@ public class Player extends Participant {
 
     @Override
     public String toString() {
-        return "Player: " + getName() + " - Level: " + level + " - Ranking: " + ranking;
+        return "Player: "+super.toString()+" - Level: "+level+" - Ranking: "+ranking;
     }
 }

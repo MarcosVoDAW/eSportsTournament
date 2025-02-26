@@ -2,17 +2,17 @@ package tournament.data;
 
 public class Match
 {
-    Tournament tournament;
-    Participant participant1;
-    Participant participant2;
-    String result;
+    protected Tournament associatedTournament;
+    protected Participant participant1;
+    protected Participant participant2;
+    protected String result;
 
-    public Match(Tournament tournament,Participant participant1,Participant participant2,String result)
+    public Match(Tournament associatedTournament, Participant participant1, Participant participant2)
     {
-        this.tournament=tournament;
+        this.associatedTournament = associatedTournament;
         this.participant1=participant1;
         this.participant2=participant2;
-        this.result=result;
+        this.result="Pending";
     }
 
     public void setResult(String result)
@@ -22,6 +22,6 @@ public class Match
 
     public String toString()
     {
-        return "Match in " + tournament + " - " + participant1 + " vs. " + participant2 + " - Result: " + result;
+        return "Match in "+associatedTournament+" - "+participant1+" vs. "+participant2+" - Result: "+result;
     }
 }

@@ -17,5 +17,8 @@ public abstract class Participant
         this.name=name;
     }
 
-    public abstract String toString();
+    @Override
+    public String toString() {
+        return name;
+    }
 }

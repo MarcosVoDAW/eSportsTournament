@@ -3,9 +3,9 @@ package tournament.data;
 public class TeamTournament extends Tournament {
     protected int playersPerTeam;
 
-    public TeamTournament(String name, String gameAssociated, double prize, int playersPerTeam)
+    public TeamTournament(String name, String associatedGame, double prize, int playersPerTeam)
     {
-        super(name, gameAssociated, prize);
+        super(name, associatedGame, prize);
         this.playersPerTeam = playersPerTeam;
     }
 
@@ -21,6 +21,6 @@ public class TeamTournament extends Tournament {
     @Override
     public String toString()
     {
-        return super.toString() + " -Prize: " + prize + "€ -Players per team: " + playersPerTeam;
+        return "Team Tournament - "+super.toString()+" - Prize: "+prize+"€ - Players per team: " + playersPerTeam;
     }
 }

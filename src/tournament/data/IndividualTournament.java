@@ -2,14 +2,15 @@ package tournament.data;
 
 public class IndividualTournament extends Tournament
 {
-    public IndividualTournament(String name, String gameAssociated, double prize)
+    public IndividualTournament(String name, String associatedGame, double prize)
     {
-        super(name, gameAssociated, prize);
+        super(name, associatedGame, prize);
     }
+
     @Override
     public String toString()
     {
-        return super.toString() + " -Prize: " + prize + "€";
+        return "Individual Tournament - "+super.toString()+" - Prize: "+prize +"€";
     }
 
 }

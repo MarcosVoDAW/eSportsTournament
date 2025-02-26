@@ -1,14 +1,19 @@
 package tournament.data;
 
+import tournament.exceptions.FullTeamException;
+
 public class Team extends Participant
 {
-    Player[]players;
-    int playerCount;
-    public Team(String name,Player[]players,int playerCount)
+    //Variable para el máximo de jugadores por si hay que cambiarlo a futuro en algún cambio
+    protected final int max_players = 5;
+    protected Player[] players;
+    protected int playerCount;
+
+    public Team(String name)
     {
         super(name);
-        this.players=new Player[5];
-        this.playerCount=playerCount;
+        this.players = new Player[max_players];
+        this.playerCount = 0;
     }
     public Player[] getPlayers()
     {
@@ -16,20 +21,26 @@ public class Team extends Participant
     }
     public void setPlayers(Player[]players)
     {
-        this.players=players;
+        this.players = players;
     }
-    public void addPlayer(Player p)
+    public void addPlayer(Player player) throws FullTeamException
     {
-        if(playerCount>2 && playerCount<5)
+        if(playerCount>= max_players)
         {
-
+            throw new FullTeamException("The team is full");
         }
-
+        players[playerCount] = player;
+        playerCount++;
     }
     @Override
     public String toString()
     {
-        return "Members: " +players + " -Player: " +getName() ;
+        String playersString="";
+        for (Player player : players)
+        {
+            playersString += "- "+player + "\n";
+        }
+        return super.toString()+" - Members: "+playerCount+"/"+max_players+": "+playersString;
     }
 
 }

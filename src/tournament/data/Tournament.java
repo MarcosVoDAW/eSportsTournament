@@ -2,12 +2,12 @@ package tournament.data;
 
 public abstract class Tournament {
     protected String name;
-    protected String gameAssociated;
+    protected String associatedGame;
     protected double prize;
 
-    public Tournament(String name, String gameAssociated, double prize) {
+    public Tournament(String name, String associatedGame, double prize) {
         this.name = name;
-        this.gameAssociated = gameAssociated;
+        this.associatedGame = associatedGame;
         this.prize = prize;
     }
     public double getPrize() {
@@ -22,16 +22,17 @@ public abstract class Tournament {
     public void setName(String name) {
         this.name = name;
     }
-    public String getGameAssociated() {
-        return gameAssociated;
+    public String getAssociatedGame() {
+        return associatedGame;
     }
-    public void setGameAssociated(String gameAssociated) {
-        this.gameAssociated = gameAssociated;
+    public void setAssociatedGame(String associatedGame) {
+        this.associatedGame = associatedGame;
     }
 
+    @Override
     public String toString()
     {
-        return name + " (" + gameAssociated + ")" ;
+        return name+" ("+associatedGame+")";
     }
 
 }
