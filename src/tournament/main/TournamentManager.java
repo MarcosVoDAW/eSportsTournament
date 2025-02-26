@@ -103,6 +103,7 @@ public class TournamentManager {
         return result;
     }
 
+
     public void showTournaments()
     {
         for (Tournament tournament : tournaments)
