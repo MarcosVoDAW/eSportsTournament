@@ -167,9 +167,10 @@ public class TournamentManager {
     }
     public void showTournamentByNameO1()
     {
+        System.out.println("__________________________________________________________");
         Arrays.sort(tournaments, new TournamentNameComparator());
         showTournaments();
-
+        System.out.println("__________________________________________________________");
         Arrays.sort(tournaments, new Comparator<Tournament>() {
             @Override
             public int compare(Tournament t1, Tournament t2) {
@@ -177,7 +178,7 @@ public class TournamentManager {
             }
         });
         showTournaments();
-
+        System.out.println("__________________________________________________________");
         Arrays.sort(tournaments, (t1,t2)-> t1.getName().compareTo(t2.getName()));
         showTournaments();
     }

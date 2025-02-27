@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-
     public static void mostrarMenu()
     {
+        System.out.println("__________________________________________________________");
         System.out.println("1. View available tournaments ordered by name");
         System.out.println("2. View players information ordered by ranking and name");
         System.out.println("3. View teams information ordered by ranking");
@@ -28,10 +28,13 @@ public class Main {
         System.out.println("10. Exit");
         System.out.println("__________________________________________________________");
         System.out.print("Choose one of the options to perform: ");
+
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        TournamentManager manager = new TournamentManager();
+        manager.initialize();
 
         int option;
         do
@@ -42,25 +45,31 @@ public class Main {
             switch (option)
             {
                 case 1:
-                    System.out.println("Mostrando torneos ordenados por nombre...");
+                    manager.showTournamentByNameO1();
                     break;
                 case 2:
-                    System.out.println("Mostrando información de jugadores ordenados por ranking y nombre...");
+                    manager.showPlayersByRankingAndNameO2();
                     break;
                 case 3:
-                    System.out.println("Mostrando información de equipos ordenados por ranking...");
+                    manager.showTeamRanking();
                     break;
                 case 4:
                     System.out.println("Añadiendo un nuevo jugador a un equipo...");
                     break;
                 case 5:
-                    System.out.println("Buscando un jugador exacto por nombre...");
+                    System.out.print("Enter player name: ");
+                    String playerName = scanner.next();
+                    System.out.println(manager.findPlayer(playerName) == null ? "Player not found" : manager.findPlayer(playerName));
                     break;
                 case 6:
-                    System.out.println("Buscando un jugador...");
+                    System.out.println("Search for player: ");
+                    String playerSearch = scanner.next();
+                    manager.findPlayersO6(playerSearch);
                     break;
                 case 7:
-                    System.out.println("Buscando un equipo...");
+                    System.out.print("Search for team: ");
+                    String teamSearch = scanner.next();
+                    manager.findTeamsO7(teamSearch);
                     break;
                 case 8:
                     System.out.println("Mostrando todos los partidos ordenados por torneo...");
