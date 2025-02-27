@@ -54,7 +54,7 @@ public class Main {
                     manager.showTeamRanking();
                     break;
                 case 4:
-                    System.out.println("Añadiendo un nuevo jugador a un equipo...");
+                    manager.addNewPlayerToTeamO4();
                     break;
                 case 5:
                     System.out.print("Enter player name: ");
@@ -72,16 +72,16 @@ public class Main {
                     manager.findTeamsO7(teamSearch);
                     break;
                 case 8:
-                    System.out.println("Mostrando todos los partidos ordenados por torneo...");
+                    manager.showMatchesByTournamentNameO8();
                     break;
                 case 9:
-                    System.out.println("Actualizando resultados de partidos pendientes...");
+                    manager.inputResult();
                     break;
                 case 10:
-                    System.out.println("Bye!");
+                    System.out.println("Exiting...");
                     break;
                 default:
-                    System.out.println("Opción no válida, intente nuevamente.");
+                    System.out.println("Option not available.Try again");
                     break;
             }
 

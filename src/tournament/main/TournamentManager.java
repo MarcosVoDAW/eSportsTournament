@@ -143,6 +143,7 @@ public class TournamentManager {
     {
         Arrays.sort(registeredTeams, new TeamRankingComparator());
         showParticipantsArray(registeredTeams);
+        System.out.println("__________________________________________________________");
 
         Arrays.sort(registeredTeams, new Comparator<Team>() {
             @Override
@@ -151,9 +152,11 @@ public class TournamentManager {
             }
         });
         showParticipantsArray(registeredTeams);
+        System.out.println("__________________________________________________________");
 
         Arrays.sort(registeredTeams, (t1,t2) -> Double.compare(t1.getAveragePlayerRanking(), t2.getAveragePlayerRanking()));
         showParticipantsArray(registeredTeams);
+        System.out.println("__________________________________________________________");
     }
 
 
@@ -186,6 +189,7 @@ public class TournamentManager {
     {
         Arrays.sort(registeredPlayers, new PlayerRankingAndNameComparator());
         showParticipantsArray(registeredPlayers);
+        System.out.println("__________________________________________________________");
 
         Arrays.sort(registeredPlayers, new Comparator<Player>() {
             @Override
@@ -198,6 +202,7 @@ public class TournamentManager {
             }
         });
         showParticipantsArray(registeredPlayers);
+        System.out.println("__________________________________________________________");
 
         Arrays.sort(registeredPlayers, (p1,p2)-> {
             int result;
@@ -207,6 +212,7 @@ public class TournamentManager {
             return result;
         });
         showParticipantsArray(registeredPlayers);
+        System.out.println("__________________________________________________________");
     }
     public void addNewPlayerToTeamO4()
     {
@@ -215,12 +221,12 @@ public class TournamentManager {
         Team team =  findTeam(teamName);
         if (team != null)
         {
-            System.out.println("Player data: ");
+            System.out.println("Player data");
             System.out.println("Name: ");
             String playerName = scanner.nextLine();
-            System.out.println("Name: ");
+            System.out.println("Level: ");
             int playerLevel = scanner.nextInt();
-            System.out.println("Name: ");
+            System.out.println("Ranking: ");
             double playerRanking = scanner.nextDouble();
             Player player = new Player(playerName, playerLevel, playerRanking);
             try
@@ -261,6 +267,7 @@ public class TournamentManager {
         {
             System.out.println(match);
         }
+        System.out.println("__________________________________________________________");
 
         Arrays.sort(matches, new Comparator<Match>() {
             @Override
@@ -272,21 +279,23 @@ public class TournamentManager {
         {
             System.out.println(match);
         }
+        System.out.println("__________________________________________________________");
 
         Arrays.sort(matches, (m1,m2)-> (m1.getAssociatedTournament().getName()).compareTo(m2.getAssociatedTournament().getName()));
         for(Match match : matches)
         {
             System.out.println(match);
         }
+        System.out.println("__________________________________________________________");
     }
     //para opcion 9 O9
     public void inputResult()
     {
-        for (int i = 0; i < matches.length; i++)
+        for (int i = 1; i <= matches.length; i++)
         {
-            if (matches[i].getResult().equalsIgnoreCase("Pending"))
+            if (matches[i-1].getResult().equalsIgnoreCase("Pending"))
             {
-                System.out.println(i + ": " + matches[i]);
+                System.out.println( i+ ": " + matches[i-1]);
             }
         }
 
@@ -294,8 +303,10 @@ public class TournamentManager {
         int matchIndex = scanner.nextInt();
         //comprobar si el index que mete es valido??
         System.out.print("Result: ");
+        scanner.nextLine();
         String result = scanner.nextLine();
 
-        matches[matchIndex].setResult(result);
+
+        matches[matchIndex-1].setResult(result);
     }
 }
