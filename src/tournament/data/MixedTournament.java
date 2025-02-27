@@ -8,7 +8,7 @@ public class MixedTournament extends Tournament{
         super(name, associatedGame, prize);
         if(!(gameMode.equals("1v1") || gameMode.equals("5v5")))
         {
-            throw new RuntimeException("Incorrect option");
+            throw new IllegalArgumentException("Incorrect option");
         }
         this.gameMode = gameMode;
     }
@@ -21,7 +21,7 @@ public class MixedTournament extends Tournament{
     {
         if(!(gameMode.equals("1v1") || gameMode.equals("5v5")))
         {
-            throw new RuntimeException("Incorrect option");
+            throw new IllegalArgumentException("Incorrect option");
         }
         this.gameMode = gameMode;
     }
