@@ -57,7 +57,7 @@ public class TournamentManager {
         } catch (FullTeamException e){
             //?????? me lo pone solo
             //e.printStackTrace();
-            System.out.println(e.getMessage());
+            System.err.println("Error adding player: "+e.getMessage());
         }
 
         registeredTeams[0] = team1;
@@ -228,7 +228,7 @@ public class TournamentManager {
             }
             catch (FullTeamException e)
             {
-                System.out.println(e.getMessage());
+                System.err.println("Error adding player: "+e.getMessage());
             }
         }
         else
