@@ -12,8 +12,8 @@ public class Main {
         System.out.println("3. View teams information ordered by ranking");
         System.out.println("4. Add a new player to a team");
         System.out.println("5. Find an exact player by name");
-        System.out.println("6. Find a player");
-        System.out.println("7. Find a team");
+        System.out.println("6. Find players");
+        System.out.println("7. Find teams");
         System.out.println("8. Show all the matches ordered by tournament name");
         System.out.println("9. Update the result of the matches pending");
         System.out.println("10. Exit");
