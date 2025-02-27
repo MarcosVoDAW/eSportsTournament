@@ -6,10 +6,6 @@ public class MixedTournament extends Tournament{
     public MixedTournament(String name, String associatedGame, double prize, String gameMode)
     {
         super(name, associatedGame, prize);
-        if(!(gameMode.equals("1v1") || gameMode.equals("5v5")))
-        {
-            throw new IllegalArgumentException("Incorrect option");
-        }
         this.gameMode = gameMode;
     }
 
@@ -19,10 +15,6 @@ public class MixedTournament extends Tournament{
     }
     public void setGameMode(String gameMode)
     {
-        if(!(gameMode.equals("1v1") || gameMode.equals("5v5")))
-        {
-            throw new IllegalArgumentException("Incorrect option");
-        }
         this.gameMode = gameMode;
     }
 

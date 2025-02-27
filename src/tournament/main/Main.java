@@ -1,3 +1,12 @@
+/*
+Name:
+Marcos Varela
+Nehuén Rojas
+Lucia...
+
+1ºDAW
+ */
+
 package tournament.main;
 import tournament.data.*;
 import java.util.ArrayList;
@@ -25,7 +34,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         int option;
-        boolean exit = false;
         do
         {
             mostrarMenu();
@@ -61,14 +69,14 @@ public class Main {
                     System.out.println("Actualizando resultados de partidos pendientes...");
                     break;
                 case 10:
-                    exit = true;
+                    System.out.println("Bye!");
                     break;
                 default:
                     System.out.println("Opción no válida, intente nuevamente.");
                     break;
             }
 
-        }while(!exit);
+        }while(option != 10);
 
     }
 }
