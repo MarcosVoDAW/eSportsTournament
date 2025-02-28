@@ -4,6 +4,9 @@ import tournament.exceptions.FullTeamException;
 
 public class Team extends Participant
 {
+    /**
+     * Variable for the maximum number of players in case it has to be changed in the future
+     */
     //Variable for the maximum number of players in case it has to be changed in the future
     protected final int max_players = 5;
     protected Player[] players;
@@ -34,6 +37,10 @@ public class Team extends Participant
         playerCount++;
     }
 
+    /**
+     *extra function to get de average ranking of the players of a team, for use it on sorting
+     * @see tournament.comparators.TeamRankingComparator
+     */
     //extra function
     public double getAveragePlayerRanking(){
         double sum = 0;
@@ -45,6 +52,9 @@ public class Team extends Participant
         return sum/playerCount;
     }
 
+    /**
+     *  generates a string with all the members of the team to implement it on the toString
+     */
     @Override
     public String toString()
     {

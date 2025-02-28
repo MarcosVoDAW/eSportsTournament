@@ -23,7 +23,9 @@ public class TournamentManager {
         tournaments = new Tournament[3];
         matches = new Match[5];
     }
-
+    /**
+     *  Populates the arrays with predefined data.
+     */
     public void initialize() {
 
         registeredPlayers[0] = new Player("Pepe", 11, -1);
@@ -91,6 +93,9 @@ public class TournamentManager {
         }
     }
     //function to option 5 O5
+    /**
+     * Searches for a player by username and Find an exact player by name(Option 5)
+     */
     public Player findPlayer(String username)
     {
         Player result = null;
@@ -102,6 +107,9 @@ public class TournamentManager {
         return result;
     }
 
+    /**
+     * Searches for a team by name.
+     */
     public Team findTeam(String teamName)
     {
         Team result = null;
@@ -113,6 +121,10 @@ public class TournamentManager {
         return result;
     }
 
+    /**
+     * Displays all available tournaments
+     * @see showTournamentByNameO1
+     */
     public void showTournaments()
     {
         for (Tournament tournament : tournaments)
@@ -121,6 +133,11 @@ public class TournamentManager {
         }
     }
 
+    /**
+     * Displays players sorted by ranking.
+     * The result of these function will be shown 3 times
+     * @see PlayerRankingComparator
+     */
     //The result of these function will be shown 3 times
     public void showPlayerRanking()
     {
@@ -138,6 +155,11 @@ public class TournamentManager {
         Arrays.sort(registeredPlayers, (p1, p2) -> Double.compare(p1.getRanking(), p2.getRanking()));
         showParticipantsArray(registeredPlayers);
     }
+    /**
+     * View teams information ordered by ranking(Option 3)
+     * The result of these function will be shown 3 times
+     * @see TeamRankingComparator
+     */
     //The result of these function will be shown 3 times
     //function to option 3 O3
     public void showTeamRanking()
@@ -160,9 +182,13 @@ public class TournamentManager {
         showParticipantsArray(registeredTeams);
     }
 
-
-    //extra function:
+    //extra functions:
     //Show players and teams
+    /**
+     * Show players and teams arrays
+     * @see showPlayersByRankingAndNameO2
+     * @see showTeamRanking
+     */
     public void showParticipantsArray(Participant[] participants)
     {
         for(Participant participant : participants)
@@ -170,6 +196,11 @@ public class TournamentManager {
             System.out.println(participant);
         }
     }
+    /**
+     * View available tournaments ordered by name(Option 1)
+     * @see TournamentNameComparator
+     * @author marcos
+     */
     public void showTournamentByNameO1()
     {
         System.out.println("1º-A class that implements Comparator-____________________");
@@ -187,6 +218,10 @@ public class TournamentManager {
         Arrays.sort(tournaments, (t1,t2)-> t1.getName().compareTo(t2.getName()));
         showTournaments();
     }
+    /**
+     * View players information ordered by ranking and name(Option 2)
+     * @see PlayerRankingComparator
+     */
     public void showPlayersByRankingAndNameO2()
     {
         System.out.println("1º-A class that implements Comparator-____________________");
@@ -216,6 +251,11 @@ public class TournamentManager {
         });
         showParticipantsArray(registeredPlayers);
     }
+    /**
+     * Add a new player to a team(Option 4) FullException implementation
+     * @see FullTeamException
+     * @see Team
+     */
     public void addNewPlayerToTeamO4()
     {
         scanner.nextLine();
@@ -255,6 +295,9 @@ public class TournamentManager {
             System.out.println("No team found");
         }
     }
+    /**
+     * Find players(Option 6)
+     */
     public void findPlayersO6(String text)
     {
         boolean founded=false;
@@ -268,6 +311,9 @@ public class TournamentManager {
         if(!founded)
             System.out.println("Player not found");
     }
+    /**
+     * Find teams(Option 7)
+     */
     public void findTeamsO7(String text)
     {
         boolean founded=false;
@@ -281,6 +327,10 @@ public class TournamentManager {
         if(!founded)
             System.out.println("Team not found");
     }
+    /**
+     * Show matches array
+     * @see showMatchesByTournamentNameO8
+     */
     public void showMatches()
     {
         for(Match match : matches)
@@ -288,6 +338,10 @@ public class TournamentManager {
             System.out.println(match);
         }
     }
+    /**
+     * Show all the matches ordered by tournament name(Option 8)
+     * @see MatchTournamentNameComparator
+     */
     public void showMatchesByTournamentNameO8()
     {
         System.out.println("1º-A class that implements Comparator-____________________");
@@ -307,6 +361,10 @@ public class TournamentManager {
         Arrays.sort(matches, (m1,m2)-> (m1.getAssociatedTournament().getName()).compareTo(m2.getAssociatedTournament().getName()));
         showMatches();
     }
+    /**
+     * Update the result of the matches pending(Option 9)
+     * @see Match
+     */
     //function to option 9 O9
     public void inputResult()
     {

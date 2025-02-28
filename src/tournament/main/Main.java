@@ -14,6 +14,9 @@ package tournament.main;
 import java.util.Scanner;
 
 public class Main {
+    /**
+     *  Show de menu
+     */
     public static void mostrarMenu()
     {
         System.out.print(
