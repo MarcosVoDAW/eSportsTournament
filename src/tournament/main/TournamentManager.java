@@ -245,29 +245,43 @@ public class TournamentManager {
     }
     public void findPlayersO6(String text)
     {
+        boolean founded=false;
         for (Player player : registeredPlayers) {
-            if (player.getName().toLowerCase().contains(text.toLowerCase())) {
+            if (player.getName().toLowerCase().contains(text.toLowerCase()))
+            {
                 System.out.println(player);
+                founded=true;
             }
         }
+        if(!founded)
+            System.out.println("Player not found");
     }
     public void findTeamsO7(String text)
     {
+        boolean founded=false;
         for (Team team : registeredTeams) {
-            if (team.getName().toLowerCase().contains(text.toLowerCase())) {
+            if (team.getName().toLowerCase().contains(text.toLowerCase()))
+            {
                 System.out.println(team);
+                founded=true;
             }
         }
+        if(!founded)
+            System.out.println("Team not found");
     }
-    public void showMatchesByTournamentNameO8()
+    public void showMatches()
     {
-        //hacer funcion pra mostrar el array cada vez??
-        System.out.println("1º-A class that implements Comparator-____________________");
-        Arrays.sort(matches, new MatchTournamentNameComparator());
         for(Match match : matches)
         {
             System.out.println(match);
         }
+
+    }
+    public void showMatchesByTournamentNameO8()
+    {
+        System.out.println("1º-A class that implements Comparator-____________________");
+        Arrays.sort(matches, new MatchTournamentNameComparator());
+        showMatches();
 
         System.out.println("2º-An anonymous class-____________________________________");
         Arrays.sort(matches, new Comparator<Match>() {
@@ -276,17 +290,11 @@ public class TournamentManager {
                 return (m1.getAssociatedTournament().getName()).compareTo(m2.getAssociatedTournament().getName());
             }
         });
-        for(Match match : matches)
-        {
-            System.out.println(match);
-        }
+        showMatches();
 
         System.out.println("3º-A lambda expression-___________________________________");
         Arrays.sort(matches, (m1,m2)-> (m1.getAssociatedTournament().getName()).compareTo(m2.getAssociatedTournament().getName()));
-        for(Match match : matches)
-        {
-            System.out.println(match);
-        }
+        showMatches();
     }
     //para opcion 9 O9
     public void inputResult()
