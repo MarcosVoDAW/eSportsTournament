@@ -73,11 +73,9 @@ public class TournamentManager {
         Random random = new Random();
         for (int i = 0; i < matches.length; i++) {
             Tournament tournament = tournaments[random.nextInt(tournaments.length)];
-            boolean participantIsPlayer = random.nextBoolean();
-
             Participant participant1;
             Participant participant2;
-            if (participantIsPlayer) {
+            if (tournament instanceof IndividualTournament) {
                 participant1 = registeredPlayers[random.nextInt(registeredPlayers.length)];
                 participant2 = registeredPlayers[random.nextInt(registeredPlayers.length)];
             }
@@ -216,17 +214,17 @@ public class TournamentManager {
     }
     public void addNewPlayerToTeamO4()
     {
-        System.out.println("Team: ");
+        System.out.print("Team: ");
         String teamName = scanner.nextLine();
         Team team =  findTeam(teamName);
         if (team != null)
         {
             System.out.println("Player data");
-            System.out.println("Name: ");
+            System.out.print("Name: ");
             String playerName = scanner.nextLine();
-            System.out.println("Level: ");
+            System.out.print("Level: ");
             int playerLevel = scanner.nextInt();
-            System.out.println("Ranking: ");
+            System.out.print("Ranking: ");
             double playerRanking = scanner.nextDouble();
             Player player = new Player(playerName, playerLevel, playerRanking);
             try
@@ -275,7 +273,6 @@ public class TournamentManager {
         {
             System.out.println(match);
         }
-
     }
     public void showMatchesByTournamentNameO8()
     {
@@ -307,7 +304,7 @@ public class TournamentManager {
             }
         }
 
-        System.out.println("Number of the match you want update: ");
+        System.out.print("Number of the match you want update: ");
         int matchIndex = scanner.nextInt();
         //comprobar si el index que mete es valido??
         System.out.print("Result: ");

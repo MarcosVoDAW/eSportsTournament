@@ -63,7 +63,7 @@ public class Main {
                     System.out.println(manager.findPlayer(playerName) == null ? "Player not found" : manager.findPlayer(playerName));
                     break;
                 case "6":
-                    System.out.println("Search for player: ");
+                    System.out.print("Search for player: ");
                     String playerSearch = scanner.next();
                     manager.findPlayersO6(playerSearch);
                     break;
