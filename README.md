@@ -28,7 +28,7 @@ The project is divided into the following packages:
   - `MatchTournamentNameComparator` 🔄 → Compares matches by tournament name.
   - `PlayerRankingAndNameComparator` 🏅 → Compares players by ranking and name.
   - `PlayerRankingComparator` 🏆 → Compares players by ranking.
-  - `TeamRankingComparator` 🏅 → Compares teams by ranking.
+  - `TeamRankingComparator` 🏅 → Compares teams by average player ranking.
   - `TournamentNameComparator` 📜 → Compares tournaments by name.
 - **`tournament.exceptions`** 🚨 → Handles a custom exception: `FullTeamException`.
 
