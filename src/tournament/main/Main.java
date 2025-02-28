@@ -4,7 +4,7 @@ eSports Tournament Management System
 Members:
 Marcos Varela Orchillés - Usuario de Git "MarcosVaorDAW" y "MarcosVoDAW"
 Nehuén Esteban Rojas Marsicano - Usuario de Git "Manuel Gutierrez"
-Lucía Navarro Cruz - Usuario de Git "Lucia19-Vip"
+Lucía Navarro Cruz - Usuario de Git "Lucia19-beep"
 
 
 1ºDAW

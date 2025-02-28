@@ -4,7 +4,7 @@ import tournament.exceptions.FullTeamException;
 
 public class Team extends Participant
 {
-    //Variable para el máximo de jugadores por si hay que cambiarlo a futuro en algún cambio
+    //Variable for the maximum number of players in case it has to be changed in the future
     protected final int max_players = 5;
     protected Player[] players;
     protected int playerCount;
@@ -34,7 +34,7 @@ public class Team extends Participant
         playerCount++;
     }
 
-    //funcion extra
+    //extra function
     public double getAveragePlayerRanking(){
         double sum = 0;
         for (Player player : players)
@@ -49,18 +49,13 @@ public class Team extends Participant
     public String toString()
     {
         String playersString="";
-//        for (Player player : players)
-//        {
-//            if (player != null)
-//                playersString += "- "+player + "\n";
-//        }
         for (int i = 0; i < playerCount; i++) {
             if (players[i] != null)
             {
-                playersString += " - " + players[i] +(i==playerCount-1? "" : "\n");
+                playersString += "\n - " + players[i];
             }
         }
-        return super.toString()+" - Members: "+playerCount+"/"+max_players+": \n"+playersString;
+        return super.toString()+" - Members: "+playerCount+"/"+max_players+": "+playersString;
     }
 
 }

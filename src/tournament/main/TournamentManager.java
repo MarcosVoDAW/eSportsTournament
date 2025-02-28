@@ -12,10 +12,10 @@ import java.util.Scanner;
 public class TournamentManager {
     Scanner scanner = new Scanner(System.in);
 
-    private Player[] registeredPlayers;
-    private Team[] registeredTeams;
-    private Tournament[] tournaments;
-    private Match[] matches;
+    private final Player[] registeredPlayers;
+    private final Team[] registeredTeams;
+    private final Tournament[] tournaments;
+    private final Match[] matches;
 
     public TournamentManager() {
         registeredPlayers = new Player[10];
@@ -55,8 +55,6 @@ public class TournamentManager {
             team5.addPlayer(registeredPlayers[8]);
             team5.addPlayer(registeredPlayers[9]);
         } catch (FullTeamException e){
-            //?????? me lo pone solo
-            //e.printStackTrace();
             System.err.println("Error adding player: "+e.getMessage());
         }
 
@@ -92,7 +90,7 @@ public class TournamentManager {
             matches[i] = new Match(tournament, participant1, participant2);
         }
     }
-    //Esta funcion para la opcion 5 del menú O5
+    //function to option 5 O5
     public Player findPlayer(String username)
     {
         Player result = null;
@@ -123,8 +121,7 @@ public class TournamentManager {
         }
     }
 
-    //3 formas distintas tambien por si acaso
-    //y no se si hay que usar esta ordenacion junto a otra para el 2
+    //The result of these function will be shown 3 times
     public void showPlayerRanking()
     {
         Arrays.sort(registeredPlayers, new PlayerRankingComparator());
@@ -141,8 +138,8 @@ public class TournamentManager {
         Arrays.sort(registeredPlayers, (p1, p2) -> Double.compare(p1.getRanking(), p2.getRanking()));
         showParticipantsArray(registeredPlayers);
     }
-    //3 formas distintas tambien por si acaso
-    //Esta funcion para la opcion 3 del menú O3
+    //The result of these function will be shown 3 times
+    //function to option 3 O3
     public void showTeamRanking()
     {
         System.out.println("1º-A class that implements Comparator-____________________");
@@ -164,7 +161,8 @@ public class TournamentManager {
     }
 
 
-    //funciones extras:
+    //extra function:
+    //Show players and teams
     public void showParticipantsArray(Participant[] participants)
     {
         for(Participant participant : participants)
@@ -220,6 +218,7 @@ public class TournamentManager {
     }
     public void addNewPlayerToTeamO4()
     {
+        scanner.nextLine();
         System.out.print("Team: ");
         String teamName = scanner.nextLine();
         Team team =  findTeam(teamName);
@@ -299,25 +298,29 @@ public class TournamentManager {
         Arrays.sort(matches, (m1,m2)-> (m1.getAssociatedTournament().getName()).compareTo(m2.getAssociatedTournament().getName()));
         showMatches();
     }
-    //para opcion 9 O9
+    //function to option 9 O9
     public void inputResult()
     {
-        for (int i = 1; i <= matches.length; i++)
+        for (int i = 0; i < matches.length; i++)
         {
-            if (matches[i-1].getResult().equalsIgnoreCase("Pending"))
+            if (matches[i].getResult().equalsIgnoreCase("Pending"))
             {
-                System.out.println( i+ ": " + matches[i-1]);
+                System.out.println( i+1+ ": " + matches[i]);
             }
         }
 
         System.out.print("Number of the match you want update: ");
-        int matchIndex = scanner.nextInt();
-        //comprobar si el index que mete es valido??
-        System.out.print("Result: ");
-        scanner.nextLine();
-        String result = scanner.nextLine();
-
-
-        matches[matchIndex-1].setResult(result);
+        int matchIndex = scanner.nextInt()-1;
+        if (matchIndex>=0 && matchIndex<matches.length )
+        {
+            System.out.print("Result: ");
+            scanner.nextLine();
+            String result = scanner.nextLine();
+            matches[matchIndex].setResult(result);
+        }
+        else
+        {
+            System.out.println("Invalid match number");
+        }
     }
 }
