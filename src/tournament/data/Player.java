@@ -11,20 +11,8 @@ public class Player extends Participant {
         this.ranking = ranking < 0 ? 0 : ranking;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level < 1 ? 1 : (level > 100 ? 100 : level);
-    }
-
     public double getRanking() {
         return ranking;
-    }
-
-    public void setRanking(double ranking) {
-        this.ranking = ranking < 0 ? 0 : ranking;
     }
 
     @Override

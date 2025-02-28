@@ -9,15 +9,6 @@ public class MixedTournament extends Tournament{
         this.gameMode = gameMode;
     }
 
-    public String getGameMode()
-    {
-        return gameMode;
-    }
-    public void setGameMode(String gameMode)
-    {
-        this.gameMode = gameMode;
-    }
-
     @Override
     public String toString()
     {

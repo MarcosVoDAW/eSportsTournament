@@ -19,26 +19,6 @@ public class Match
         return associatedTournament;
     }
 
-    public void setAssociatedTournament(Tournament associatedTournament) {
-        this.associatedTournament = associatedTournament;
-    }
-
-    public Participant getParticipant1() {
-        return participant1;
-    }
-
-    public void setParticipant1(Participant participant1) {
-        this.participant1 = participant1;
-    }
-
-    public Participant getParticipant2() {
-        return participant2;
-    }
-
-    public void setParticipant2(Participant participant2) {
-        this.participant2 = participant2;
-    }
-
     public String getResult() {
         return result;
     }

@@ -9,15 +9,6 @@ public class TeamTournament extends Tournament {
         this.playersPerTeam = playersPerTeam;
     }
 
-    public int getPlayersPerTeam()
-    {
-        return playersPerTeam;
-    }
-    public void setPlayersPerTeam(int playersPerTeam)
-    {
-        this.playersPerTeam = playersPerTeam;
-    }
-
     @Override
     public String toString()
     {
