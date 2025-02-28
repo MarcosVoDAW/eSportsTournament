@@ -16,20 +16,21 @@ import java.util.Scanner;
 public class Main {
     public static void mostrarMenu()
     {
-        System.out.println("__________________________________________________________");
-        System.out.println("1. View available tournaments ordered by name");
-        System.out.println("2. View players information ordered by ranking and name");
-        System.out.println("3. View teams information ordered by ranking");
-        System.out.println("4. Add a new player to a team");
-        System.out.println("5. Find an exact player by name");
-        System.out.println("6. Find players");
-        System.out.println("7. Find teams");
-        System.out.println("8. Show all the matches ordered by tournament name");
-        System.out.println("9. Update the result of the matches pending");
-        System.out.println("10. Exit");
-        System.out.println("__________________________________________________________");
-        System.out.print("Choose one of the options to perform: ");
-
+        System.out.print(
+                "\n__________________________________________________________\n" +
+                        "1. View available tournaments ordered by name\n" +
+                        "2. View players information ordered by ranking and name\n" +
+                        "3. View teams information ordered by ranking\n" +
+                        "4. Add a new player to a team\n" +
+                        "5. Find an exact player by name\n" +
+                        "6. Find players\n" +
+                        "7. Find teams\n" +
+                        "8. Show all the matches ordered by tournament name\n" +
+                        "9. Update the result of the matches pending\n" +
+                        "10. Exit\n" +
+                        "__________________________________________________________\n" +
+                        "Choose one of the options: "
+        );
     }
 
     public static void main(String[] args) {

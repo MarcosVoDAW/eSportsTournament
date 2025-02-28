@@ -227,11 +227,20 @@ public class TournamentManager {
             System.out.println("Player data");
             System.out.print("Name: ");
             String playerName = scanner.nextLine();
+            int playerLevel = 1;
+            double playerRanking = 0;
             System.out.print("Level: ");
-            int playerLevel = scanner.nextInt();
+            String playerLevelInput = scanner.next();
             System.out.print("Ranking: ");
-            double playerRanking = scanner.nextDouble();
+            String playerRankingInput = scanner.next();
+            try {
+                playerLevel = Integer.parseInt(playerLevelInput);
+                playerRanking = Double.parseDouble(playerRankingInput);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid Level/Ranking input, using default(Level=1, Ranking=0)");
+            }
             Player player = new Player(playerName, playerLevel, playerRanking);
+            System.out.println("Player: " + player + " added to: " + team.getName());
             try
             {
                 team.addPlayer(player);
@@ -310,8 +319,14 @@ public class TournamentManager {
         }
 
         System.out.print("Number of the match you want update: ");
-        int matchIndex = scanner.nextInt()-1;
-        if (matchIndex>=0 && matchIndex<matches.length )
+        String matchIndexInput = scanner.next();
+        int matchIndex = -1;
+        try {
+            matchIndex = Integer.parseInt(matchIndexInput)-1;
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid input");
+        }
+        if (matchIndex>=0 && matchIndex<matches.length)
         {
             System.out.print("Result: ");
             scanner.nextLine();
