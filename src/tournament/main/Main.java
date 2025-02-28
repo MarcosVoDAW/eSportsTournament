@@ -36,48 +36,48 @@ public class Main {
         TournamentManager manager = new TournamentManager();
         manager.initialize();
 
-        int option;
+        String option;
         do
         {
             mostrarMenu();
-            option = scanner.nextInt();
+            option = scanner.next();
 
             switch (option)
             {
-                case 1:
+                case "1":
                     manager.showTournamentByNameO1();
                     break;
-                case 2:
+                case "2":
                     manager.showPlayersByRankingAndNameO2();
                     break;
-                case 3:
+                case "3":
                     manager.showTeamRanking();
                     break;
-                case 4:
+                case "4":
                     manager.addNewPlayerToTeamO4();
                     break;
-                case 5:
+                case "5":
                     System.out.print("Enter player name: ");
                     String playerName = scanner.next();
                     System.out.println(manager.findPlayer(playerName) == null ? "Player not found" : manager.findPlayer(playerName));
                     break;
-                case 6:
+                case "6":
                     System.out.println("Search for player: ");
                     String playerSearch = scanner.next();
                     manager.findPlayersO6(playerSearch);
                     break;
-                case 7:
+                case "7":
                     System.out.print("Search for team: ");
                     String teamSearch = scanner.next();
                     manager.findTeamsO7(teamSearch);
                     break;
-                case 8:
+                case "8":
                     manager.showMatchesByTournamentNameO8();
                     break;
-                case 9:
+                case "9":
                     manager.inputResult();
                     break;
-                case 10:
+                case "10":
                     System.out.println("Exiting...");
                     break;
                 default:
@@ -85,7 +85,6 @@ public class Main {
                     break;
             }
 
-        }while(option != 10);
-
+        }while(!option.equals("10"));
     }
 }
