@@ -76,12 +76,18 @@ public class TournamentManager {
             Participant participant1;
             Participant participant2;
             if (tournament instanceof IndividualTournament) {
-                participant1 = registeredPlayers[random.nextInt(registeredPlayers.length)];
-                participant2 = registeredPlayers[random.nextInt(registeredPlayers.length)];
+                do
+                {
+                    participant1 = registeredPlayers[random.nextInt(registeredPlayers.length)];
+                    participant2 = registeredPlayers[random.nextInt(registeredPlayers.length)];
+                }while(participant1 == participant2);
             }
             else {
-                participant1 = registeredTeams[random.nextInt(registeredTeams.length)];
-                participant2 = registeredTeams[random.nextInt(registeredTeams.length)];
+                do
+                {
+                    participant1 = registeredTeams[random.nextInt(registeredTeams.length)];
+                    participant2 = registeredTeams[random.nextInt(registeredTeams.length)];
+                }while(participant1 == participant2);
             }
             matches[i] = new Match(tournament, participant1, participant2);
         }
