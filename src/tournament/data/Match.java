@@ -49,6 +49,6 @@ public class Match
 
     public String toString()
     {
-        return "Match in "+associatedTournament+"\n - "+participant1+" \n vs. \n "+participant2+" \n- Result: "+result;
+        return "Match in "+associatedTournament+"\n - "+participant1+"\n     vs.\n - "+participant2+"\n - Result: "+result;
     }
 }

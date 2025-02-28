@@ -49,10 +49,16 @@ public class Team extends Participant
     public String toString()
     {
         String playersString="";
-        for (Player player : players)
-        {
-            if (player != null)
-                playersString += "- "+player + "\n";
+//        for (Player player : players)
+//        {
+//            if (player != null)
+//                playersString += "- "+player + "\n";
+//        }
+        for (int i = 0; i < playerCount; i++) {
+            if (players[i] != null)
+            {
+                playersString += " - " + players[i] +(i==playerCount-1? "" : "\n");
+            }
         }
         return super.toString()+" - Members: "+playerCount+"/"+max_players+": \n"+playersString;
     }

@@ -21,21 +21,21 @@ public class TournamentManager {
         registeredPlayers = new Player[10];
         registeredTeams = new Team[5];
         tournaments = new Tournament[3];
-        matches = new Match[10];
+        matches = new Match[5];
     }
 
     public void initialize() {
 
-        registeredPlayers[0] = new Player("Player0", 11, -1);
-        registeredPlayers[1] = new Player("Player1", 101, 2600);
-        registeredPlayers[2] = new Player("Player2", -1, 777.777);
-        registeredPlayers[3] = new Player("Player3", 12, 453.453);
-        registeredPlayers[4] = new Player("Player4", 4, 1212.1212);
-        registeredPlayers[5] = new Player("Player5", 5, 123.456);
-        registeredPlayers[6] = new Player("Player6", 3, 3.1415926);
-        registeredPlayers[7] = new Player("Player7", 26, 999.99);
-        registeredPlayers[8] = new Player("Player8", 99, 48000);
-        registeredPlayers[9] = new Player("Player9", 77, 69420.777);
+        registeredPlayers[0] = new Player("Pepe", 11, -1);
+        registeredPlayers[1] = new Player("CacahueteGamer", 101, 2600);
+        registeredPlayers[2] = new Player("Patata_frita", -1, 777.777);
+        registeredPlayers[3] = new Player("IronMak", 12, 453.453);
+        registeredPlayers[4] = new Player("TheNexxCover", 4, 777.777);
+        registeredPlayers[5] = new Player("Hiensito", 5, 123.456);
+        registeredPlayers[6] = new Player("Macarrón Termorretráctil", 3, 3.1415926);
+        registeredPlayers[7] = new Player("Aaros de cebolla", 26, 999.99);
+        registeredPlayers[8] = new Player("csvera12", 99, 69420.123);
+        registeredPlayers[9] = new Player("Elenituxx<3", 77, 777.777);
 
         Team team1 = new Team("DoWhileGang");
         Team team2 = new Team("Espartanos");
@@ -67,7 +67,7 @@ public class TournamentManager {
         registeredTeams[4] = team5;
 
         tournaments[0] = new IndividualTournament("Individual Battles", "CS:GO", 999.99);
-        tournaments[1] = new TeamTournament("Team Wars", "Minecraft", 7777, 5);
+        tournaments[1] = new TeamTournament("Team Wars", "Minecraft", 7777, 2);
         tournaments[2] = new MixedTournament("Mixed Sandwich League", "Valorant", 6942.01, "5v5");
 
         Random random = new Random();
@@ -141,10 +141,11 @@ public class TournamentManager {
     //Esta funcion para la opcion 3 del menú O3
     public void showTeamRanking()
     {
+        System.out.println("1º-A class that implements Comparator-____________________");
         Arrays.sort(registeredTeams, new TeamRankingComparator());
         showParticipantsArray(registeredTeams);
-        System.out.println("__________________________________________________________");
 
+        System.out.println("2º-An anonymous class-____________________________________");
         Arrays.sort(registeredTeams, new Comparator<Team>() {
             @Override
             public int compare(Team t1, Team t2) {
@@ -152,11 +153,10 @@ public class TournamentManager {
             }
         });
         showParticipantsArray(registeredTeams);
-        System.out.println("__________________________________________________________");
 
+        System.out.println("3º-A lambda expression-___________________________________");
         Arrays.sort(registeredTeams, (t1,t2) -> Double.compare(t1.getAveragePlayerRanking(), t2.getAveragePlayerRanking()));
         showParticipantsArray(registeredTeams);
-        System.out.println("__________________________________________________________");
     }
 
 
@@ -170,10 +170,10 @@ public class TournamentManager {
     }
     public void showTournamentByNameO1()
     {
-        System.out.println("__________________________________________________________");
+        System.out.println("1º-A class that implements Comparator-____________________");
         Arrays.sort(tournaments, new TournamentNameComparator());
         showTournaments();
-        System.out.println("__________________________________________________________");
+        System.out.println("2º-An anonymous class-____________________________________");
         Arrays.sort(tournaments, new Comparator<Tournament>() {
             @Override
             public int compare(Tournament t1, Tournament t2) {
@@ -181,16 +181,17 @@ public class TournamentManager {
             }
         });
         showTournaments();
-        System.out.println("__________________________________________________________");
+        System.out.println("3º-A lambda expression-___________________________________");
         Arrays.sort(tournaments, (t1,t2)-> t1.getName().compareTo(t2.getName()));
         showTournaments();
     }
     public void showPlayersByRankingAndNameO2()
     {
+        System.out.println("1º-A class that implements Comparator-____________________");
         Arrays.sort(registeredPlayers, new PlayerRankingAndNameComparator());
         showParticipantsArray(registeredPlayers);
-        System.out.println("__________________________________________________________");
 
+        System.out.println("2º-An anonymous class-____________________________________");
         Arrays.sort(registeredPlayers, new Comparator<Player>() {
             @Override
             public int compare(Player p1, Player p2) {
@@ -202,8 +203,8 @@ public class TournamentManager {
             }
         });
         showParticipantsArray(registeredPlayers);
-        System.out.println("__________________________________________________________");
 
+        System.out.println("3º-A lambda expression-___________________________________");
         Arrays.sort(registeredPlayers, (p1,p2)-> {
             int result;
             result = Double.compare(p1.getRanking(), p2.getRanking());
@@ -212,7 +213,6 @@ public class TournamentManager {
             return result;
         });
         showParticipantsArray(registeredPlayers);
-        System.out.println("__________________________________________________________");
     }
     public void addNewPlayerToTeamO4()
     {
@@ -262,13 +262,14 @@ public class TournamentManager {
     public void showMatchesByTournamentNameO8()
     {
         //hacer funcion pra mostrar el array cada vez??
+        System.out.println("1º-A class that implements Comparator-____________________");
         Arrays.sort(matches, new MatchTournamentNameComparator());
         for(Match match : matches)
         {
             System.out.println(match);
         }
-        System.out.println("__________________________________________________________");
 
+        System.out.println("2º-An anonymous class-____________________________________");
         Arrays.sort(matches, new Comparator<Match>() {
             @Override
             public int compare(Match m1, Match m2) {
@@ -279,14 +280,13 @@ public class TournamentManager {
         {
             System.out.println(match);
         }
-        System.out.println("__________________________________________________________");
 
+        System.out.println("3º-A lambda expression-___________________________________");
         Arrays.sort(matches, (m1,m2)-> (m1.getAssociatedTournament().getName()).compareTo(m2.getAssociatedTournament().getName()));
         for(Match match : matches)
         {
             System.out.println(match);
         }
-        System.out.println("__________________________________________________________");
     }
     //para opcion 9 O9
     public void inputResult()

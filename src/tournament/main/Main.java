@@ -1,15 +1,15 @@
 /*
-Name:
-Marcos Varela
-Nehuén Rojas
-Lucia...
+eSports Tournament Management System
+
+Members:
+Marcos Varela Orchillés
+Nehuén Esteban Rojas Marsicano
+Lucía Navarro Cruz
 
 1ºDAW
  */
 
 package tournament.main;
-import tournament.data.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
